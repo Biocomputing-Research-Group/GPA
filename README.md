@@ -25,7 +25,7 @@ gpa_openmp -i test.txt -o pvalue.txt -p 10000
 If compiled successfully, the required executables will be in `bin` directory. 
 
 #### Prepare summary statistics
-The step will generate a new database file with reverse sequences. Update the path of `FASTA_Database` in the configuration file.
+A toy example summary statistic data 'test.txt' is provided in [toy_example](../toy_example/test.txt).
 
 #### <a name="labelds"></a>Running GPA
 

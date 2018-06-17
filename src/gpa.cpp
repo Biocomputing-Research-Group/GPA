@@ -299,14 +299,14 @@ int test() {
 	cdf[0] = new double[20];
 
 	double * bcd = cdf[0];
-	double * acf = & cdf[0][10];
+	double * acf = &cdf[0][10];
 
 	if (xyz[0]) {
 		cout << (100 + xyz[0]) << endl;
 		bcd[10]++;
 		cout << (*acf) << endl;
 		cout << acf[1] << endl;
-		bcd[11]+=2;
+		bcd[11] += 2;
 	}
 	if (!xyz[2]) {
 		cout << (100 + xyz[2]) << endl;
@@ -397,33 +397,36 @@ int test() {
  */
 int main(int argc, char *argv[]) {
 
-	bool debug = false;
-	if (debug) {
-		test();
-		return 0;
-	}
-
-	bool openmp = false;
-	if (openmp) {
-		main_afc_openmp(argc, argv);
-		// main_test(argc, argv);
-		return 0;
-	}
-
-	bool mpi = true;
-	if (mpi) {
-		main_afc_mpi(argc, argv);
-		return 0;
-	}
-
-	bool type1 = false;
-	if (type1) {
-		main_afc_type1(argc, argv);
-		return 0;
-	}
-
-	main_boost(argc, argv);
-
+	main_afc_mpi(argc, argv);
 	return 0;
+	/*
+	 bool debug = false;
+	 if (debug) {
+	 test();
+	 return 0;
+	 }
+
+	 bool openmp = false;
+	 if (openmp) {
+	 main_afc_openmp(argc, argv);
+	 // main_test(argc, argv);
+	 return 0;
+	 }
+
+	 bool mpi = true;
+	 if (mpi) {
+	 main_afc_mpi(argc, argv);
+	 return 0;
+	 }
+
+	 bool type1 = false;
+	 if (type1) {
+	 main_afc_type1(argc, argv);
+	 return 0;
+	 }
+
+	 main_boost(argc, argv);
+
+	 return 0;*/
 }
 

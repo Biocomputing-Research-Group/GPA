@@ -26,33 +26,35 @@ If compiled successfully, the required executables will be in `bin` directory.
 
 #### Prepare summary statistics
 A toy example summary statistic data [test.txt](./toy_example/test.txt) is provided in "toy_example".
+The format of this input data is as follows:
+1st line, gene name
+2nd line, Z-statistic
+3rd line, covariance matrix
 
 #### <a name="labelds"></a>Running GPA
 
 There are two basic versions of GPA: one for running on a single machine and another for running with MPI on a cluster.  
 
-* __Single Machine Version:__ This version of the assembler should be used if you are going to run the database-searching on a single machine with one or more cores. The searching is invoked through a run `Sipros_OpemMP` in `bin` directory. The quick start command as shown below will be used in a batch job submission script or directly typed on the command line terminal.   
+* __Single Machine Version:__ This version of GPA should be used if you are going to run on a single machine with one or more cores. The quick start command as shown below will be typed on the command line terminal.   
 
 ```
 #!/bin/bash
 
-# Single MS2 file
-Sipros_OpemMP -o output_dir -f ms_data -c SiprosConfig.cfg
-
-# Multiple MS2 files in a working directory
-Sipros_OpemMP -o output_dir -w workingdirectory -c SiprosConfig.cfg
+gpa_openmp -i test.txt -o pvalue.txt -p 10000
 ```
-Results (`.Spe2Pep` files) will be saved on the output directory. if you have many configure files, specify `-g`, like `Sipros_OpemMP -o output_dir -w workingdirectory -g configurefiledirectory`. Use `./Sipros_OpemMP -h` for help information. 
+Results ('pvalue.txt' files) will be saved on the output directory.
+Use `gpa_openmp -h` for help information. 
 
-* __MPI Version:__ This version of the database-searching should be used if you are going to run on a cluster with MPI support. The run script to invoke `Sipros_MPI` depends on the cluster management and job scheduling system. An example bash script `submit_job.pbs` is provide in `configs` directory.
+* __MPI Version:__ This version of GPA should be used if you are going to run on a cluster with MPI support. An example bash script [submit_job.pbs](./toy_example/submit_job.pbs) is provide in "toy_example".
  
 The quick start commands are:
+
 ```
 ### MPI Verion 
-Sipros_MPI -o output_dir -w workingdirectory -c SiprosConfig.cfg
+gpa_mpi -i test.txt -o pvalue.txt -p 10000 -r 10000
 ```
-Results (`.Spe2Pep` files) will be saved on the output directory. if you have many configure files, specify `-g`, like `Sipros_MPI -o output_dir -w workingdirectory -g configurefiledirectory`.
-
+Results ('pvalue.txt' files) will be saved on the output directory.
+Use `gpa_mpi -h` for help information. 
 
 ### Miscellany
 

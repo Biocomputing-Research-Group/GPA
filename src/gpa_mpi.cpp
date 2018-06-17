@@ -528,6 +528,17 @@ int main_afc_mpi(int argc, char *argv[]) {
 			factor = atoi(vsArguments[++i].c_str());
 		} else if (vsArguments[i] == "-j") {
 			job_size = atoi(vsArguments[++i].c_str());
+		} else if ((vsArguments[i] == "-h") || (vsArguments[i] == "--help")) {
+			cout << "GPA version 1.0" << endl;
+			cout << "Usage: " << endl;
+			cout << "-i File containing gene name, Z-statistic, p-value, and covariance matrix" << endl;
+			cout << "-o Output file for storing the p-value using GPA" << endl;
+			cout << "-p Number of permutations in total" << endl;
+			cout << "-j Number of permutations per computing node (default 1000)" << endl;
+			cout << "-h Show help message" << endl;
+			cout << "Example:" << endl;
+			cout << "gpa_mpi -p 10000 -i test.txt -o p-value.txt" << endl;
+			exit(0);
 		}
 	}
 
@@ -627,7 +638,7 @@ int main_afc_mpi(int argc, char *argv[]) {
 		}
 		outfile.close();
 
-		double pvalue = master_process_equal(numper_permutations, job_size, dimension, v_P);
+		double pvalue = master_process(numper_permutations, job_size, dimension, v_P);
 		outfile.open(s_outfile.c_str());
 		if (outfile.is_open()) {
 			outfile << s_gene << "'s p-value:\t" << pvalue << endl;

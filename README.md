@@ -4,6 +4,7 @@ GPA can integrate association evidence from summary statistics, either p value o
 
 ```
 gpa_openmp -i test.txt -o pvalue.txt -p 10000
+gpa_mpi -i test.txt -o pvalue.txt -p 10000
 ```
 
 ### Current Version
@@ -54,7 +55,7 @@ The quick start commands are:
 
 ```
 ### MPI Verion 
-gpa_mpi -i test.txt -o pvalue.txt -p 10000 -r 10000
+gpa_mpi -i test.txt -o pvalue.txt -p 10000
 ```
 Results ('pvalue.txt' files) will be saved on the output directory.
 Use `gpa_mpi -h` for help information. 

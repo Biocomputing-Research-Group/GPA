@@ -3,10 +3,8 @@
 GPA can integrate association evidence from summary statistics, either p value or other statistical value, continuous or binary traits, which might come from the same or different studies of traits. To run GPA, you need summary statistic data in a file. Then issue a command such as:
 
 ```
-gpa_openmp -f input.mzML -c SiprosConfig.cfg -o destination_folder
+gpa_openmp -i test.txt -o pvalue.txt -p 10000
 ```
-
-The detailed user manual of the database-searching and how to use it to achieve best results is provided here: [http://siprosensemble.omicsbio.org/user-manual](http://siprosensemble.omicsbio.org/user-manual). This is a quick start guide generally for developers and testers. Users with limited experience with MS-based database-searching are advised to use the user manual.
 
 ### Current Version
 * v1.0
@@ -19,18 +17,14 @@ The detailed user manual of the database-searching and how to use it to achieve 
 2. MPI Library with MPI-3 support i.e. OpenMPI 1.8 and above or cray-mpich/7.4.0 and above. By default the mpic++ wrapper is needed. If you are on a Cray cluster and the wrapper is "CC". You will need to edit the compiler.mk file. Uncomment the line "MCC := CC" and comment out "MCC := mpic++".   
  
 #### Installation Steps
-1. Download the tarball with compiled executables for Linux with GCC 4.9 and above from  [https://github.com/guo-xuan/Sipros-Ensemble/releases](https://github.com/guo-xuan/Sipros-Ensemble/releases). The code has been tested only on Linux.
+1. Download the tarball with compiled executables for Linux with GCC 4.9 and above from  [https://github.com/Biocomputing-Research-Group/GPA/releases](https://github.com/Biocomputing-Research-Group/GPA/releases). The code has been tested only on Linux.
 2. If you decide to download the source code, use the following commands to build:
   1. OpenMP version "make openmp".
   2. MPI version version "make mpi" 
   3. All the versions can be built with "make all"
-If compiled successfully, the required executables will be in `bin` directory and the various `runSipros...` scripts can be used to run the database-searching. 
+If compiled successfully, the required executables will be in `bin` directory. 
 
 #### Prepare summary statistics
-```
-python sipros_prepare_protein_database.py -i original_database_file -o output_database_file -c config_file
-```
-
 The step will generate a new database file with reverse sequences. Update the path of `FASTA_Database` in the configuration file.
 
 #### <a name="labelds"></a>Running GPA

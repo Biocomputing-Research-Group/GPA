@@ -27,8 +27,11 @@ If compiled successfully, the required executables will be in `bin` directory.
 #### Prepare summary statistics
 A toy example summary statistic data [test.txt](./toy_example/test.txt) is provided in "toy_example".
 The format of this input data is as follows:
+
 1st line, gene name
+
 2nd line, Z-statistic
+
 3rd line, covariance matrix
 
 #### <a name="labelds"></a>Running GPA

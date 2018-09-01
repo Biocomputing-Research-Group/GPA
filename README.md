@@ -33,7 +33,9 @@ The format of this input data is as follows:
 
 2nd line, Z-statistic
 
-3rd line, covariance matrix
+3rd line, P-value
+
+4th line, covariance matrix
 
 #### <a name="labelds"></a>Running GPA
 

@@ -529,7 +529,7 @@ int main_afc_mpi(int argc, char *argv[]) {
 			factor = atoi(vsArguments[++i].c_str());
 		} else if (vsArguments[i] == "-j") {
 			job_size = atoi(vsArguments[++i].c_str());
-		} else if (vsArguments[i] == "-j") {
+		} else if (vsArguments[i] == "-t") {
 			num_traits = atoi(vsArguments[++i].c_str());
 		} else if ((vsArguments[i] == "-h") || (vsArguments[i] == "--help")) {
 			cout << "GPA version 1.0" << endl;
@@ -539,6 +539,7 @@ int main_afc_mpi(int argc, char *argv[]) {
 			cout << "-p Number of permutations in total" << endl;
 			cout << "-j Number of permutations per computing node (default 1000)" << endl;
 			cout << "-n Number of tested traits (default 1)" << endl;
+			cout << "-t Number of traits (default 1)" << endl;
 			cout << "-h Show help message" << endl;
 			cout << "Example:" << endl;
 			cout << "gpa_mpi -p 10000 -i test.txt -o p-value.txt" << endl;

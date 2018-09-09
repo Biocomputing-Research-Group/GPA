@@ -509,6 +509,7 @@ int main_afc_mpi(int argc, char *argv[]) {
 	string s_outfile = "result.txt";
 	uint64_t factor = 20; // if 40, use 64 GB for 20 SNPs
 	uint64_t job_size = 1000;
+	uint64_t num_traits = 1; // number of traits, default there is only one trait
 
 	// Grab command line arguments
 	vector<string> vsArguments;
@@ -528,6 +529,8 @@ int main_afc_mpi(int argc, char *argv[]) {
 			factor = atoi(vsArguments[++i].c_str());
 		} else if (vsArguments[i] == "-j") {
 			job_size = atoi(vsArguments[++i].c_str());
+		} else if (vsArguments[i] == "-j") {
+			num_traits = atoi(vsArguments[++i].c_str());
 		} else if ((vsArguments[i] == "-h") || (vsArguments[i] == "--help")) {
 			cout << "GPA version 1.0" << endl;
 			cout << "Usage: " << endl;
@@ -535,6 +538,7 @@ int main_afc_mpi(int argc, char *argv[]) {
 			cout << "-o Output file for storing the p-value using GPA" << endl;
 			cout << "-p Number of permutations in total" << endl;
 			cout << "-j Number of permutations per computing node (default 1000)" << endl;
+			cout << "-n Number of tested traits (default 1)" << endl;
 			cout << "-h Show help message" << endl;
 			cout << "Example:" << endl;
 			cout << "gpa_mpi -p 10000 -i test.txt -o p-value.txt" << endl;

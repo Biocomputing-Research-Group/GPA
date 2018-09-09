@@ -30,10 +30,9 @@
 #include <mpi.h>
 #include "gpa_openmp.h"
 
-void master_process_type1(uint64_t _num_replica, uint64_t _job_size, uint64_t _dimension, double * v_P,
-		string _s_outfile);
+void master_process_type1(uint64_t _num_replica, uint64_t _job_size, string _s_outfile, uint64_t _num_traits);
 void slave_process_type1(uint64_t _pool_size, uint64_t _dimension, uint64_t numper, uint64_t _job_size,
-		double * pre_mvrnorm, double * _log_array);
+		double * pre_mvrnorm, double * _log_array, uint64_t _num_traits, uint64_t _num_SNPs_per_gene);
 
 void initialize_pool_openmp_type1(uint64_t _num, uint64_t _dim, gsl_matrix * m_R, double *& pre_mvrnorm);
 void initialize_log_array(uint64_t numper_permutations, double * &log_array);

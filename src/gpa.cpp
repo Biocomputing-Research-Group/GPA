@@ -397,36 +397,36 @@ int test() {
  */
 int main(int argc, char *argv[]) {
 
-	main_afc_mpi(argc, argv);
-	return 0;
-	/*
-	 bool debug = false;
-	 if (debug) {
-	 test();
-	 return 0;
-	 }
-
-	 bool openmp = false;
-	 if (openmp) {
-	 main_afc_openmp(argc, argv);
-	 // main_test(argc, argv);
-	 return 0;
-	 }
-
-	 bool mpi = true;
-	 if (mpi) {
-	 main_afc_mpi(argc, argv);
-	 return 0;
-	 }
-
-	 bool type1 = false;
-	 if (type1) {
-	 main_afc_type1(argc, argv);
-	 return 0;
-	 }
-
-	 main_boost(argc, argv);
-
+	/*	main_afc_mpi(argc, argv);
 	 return 0;*/
+
+	bool debug = false;
+	if (debug) {
+		test();
+		return 0;
+	}
+
+	bool openmp = false;
+	if (openmp) {
+		main_afc_openmp(argc, argv);
+		// main_test(argc, argv);
+		return 0;
+	}
+
+	bool mpi = false;
+	if (mpi) {
+		main_afc_mpi(argc, argv);
+		return 0;
+	}
+
+	bool type1 = true;
+	if (type1) {
+		main_afc_type1(argc, argv);
+		return 0;
+	}
+
+	main_boost(argc, argv);
+
+	return 0;
 }
 

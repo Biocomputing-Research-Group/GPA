@@ -35,7 +35,8 @@ void slave_process_type1(uint64_t _pool_size, uint64_t _dimension, uint64_t nump
 	// vector<double> T2(numper + 1, 0);
 	// double sum1 = 0, sum2 = 0;
 	uint64_t target = 0;
-	double * pvalue_array = new double[_job_size * _num_traits];
+	uint64_t n_pvalue_array = _job_size * _num_traits;
+	double * pvalue_array = new double[n_pvalue_array];
 
 	/* data structures for each threads */
 	uint64_t nthreads = omp_get_max_threads();
@@ -150,14 +151,16 @@ void slave_process_type1(uint64_t _pool_size, uint64_t _dimension, uint64_t nump
 					}
 				}
 
-				pvalue_array[i + l] = sum1 / numper + sum2 / numper / 2;
+				pvalue_array[i*_num_traits + l] = sum1 / numper + sum2 / numper / 2;
+				// cout << pvalue_array[i + l] << endl;
 
 			}
 
 		}
 
 		/* send results to master */
-		MPI_Send(pvalue_array, _job_size * _num_traits, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
+		MPI_Send(pvalue_array, n_pvalue_array, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD);
+
 		// break;
 	}
 
